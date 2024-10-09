@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: SpringRTKIT
+  
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgres://localhost:5432
+#    username: name
+#    password: password
+  
+  

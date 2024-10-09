@@ -8,11 +8,9 @@ interface MagazineService {
 
     fun getAll(): List<Magazine>
 
-    fun save(magazine: Magazine)
+    fun save(magazine: Magazine): Magazine
 
-    fun delete(magazine: Magazine)
+    fun deleteById(id: Int): Magazine
 
-    fun deleteById(id: Int)
-
-    fun updateById(id: Int, magazine: Magazine)
+    fun updateById(id: Int, magazine: Magazine): Magazine
 }
