@@ -1,4 +1,4 @@
-package com.IvanovDS.SpringRTKIT
+package com.sg.spring
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
