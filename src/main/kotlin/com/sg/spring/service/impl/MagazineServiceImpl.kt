@@ -14,7 +14,7 @@ class MagazineServiceImpl(
     private val magazineDao: MagazineDao, private val mapper: MagazineMapper
 ) : MagazineService {
 
-    override fun save(request: CreateMagazineRequest): MagazineResponse {
+    override fun save(request: CreateMagazineRequest): MagazineResponse? {
         val magazine = mapper.mapToModel(request)
         val entity = magazineDao.save(magazine)
         return mapper.mapToResp(entity)

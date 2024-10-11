@@ -17,9 +17,8 @@ class MagazineMapper {
         text = request.text
     )
 
-    fun mapToResp(model: Magazine?): MagazineResponse = MagazineResponse(
-        id = model?.id, name = model?.name, text = model?.text
-    )
+    fun mapToResp(model: Magazine?): MagazineResponse? = model?.let { MagazineResponse(
+        id = model.id, name = model.name, text = model.text) }
 }
 
 fun MagazineResponse?.toResponseEntity(): ResponseEntity<MagazineResponse> =

@@ -1,3 +1,3 @@
 package com.sg.spring.domain
 
-data class MagazinesResponse(var magazines: List<MagazineResponse>? = null)
+data class MagazinesResponse(var magazines: List<MagazineResponse?>? = null)

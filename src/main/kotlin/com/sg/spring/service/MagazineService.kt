@@ -6,7 +6,7 @@ import com.sg.spring.domain.MagazinesResponse
 import com.sg.spring.domain.UpdateMagazineRequest
 
 interface MagazineService {
-    fun save(request: CreateMagazineRequest): MagazineResponse
+    fun save(request: CreateMagazineRequest): MagazineResponse?
 
     fun getById(id: Int): MagazineResponse?
 

@@ -17,7 +17,7 @@ class MagazineController(private val service: MagazineService) {
     @PostMapping
     fun save(@RequestBody request: CreateMagazineRequest): ResponseEntity<MagazineResponse> {
         val savedMagazine = service.save(request)
-        return ResponseEntity.created(URI("/${savedMagazine.id}")).body(savedMagazine)
+        return ResponseEntity.created(URI("/${savedMagazine?.id}")).body(savedMagazine)
     }
 
     @GetMapping("/{id}")
