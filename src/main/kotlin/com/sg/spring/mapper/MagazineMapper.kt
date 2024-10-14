@@ -4,7 +4,6 @@ import com.sg.spring.domain.CreateMagazineRequest
 import com.sg.spring.domain.MagazineResponse
 import com.sg.spring.domain.UpdateMagazineRequest
 import com.sg.spring.model.Magazine
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
 @Service
@@ -17,9 +16,9 @@ class MagazineMapper {
         text = request.text
     )
 
-    fun mapToResp(model: Magazine?): MagazineResponse? = model?.let { MagazineResponse(
-        id = model.id, name = model.name, text = model.text) }
+    fun mapToResp(model: Magazine?): MagazineResponse? = model?.let {
+        MagazineResponse(
+            id = model.id, name = model.name, text = model.text
+        )
+    }
 }
-
-fun MagazineResponse?.toResponseEntity(): ResponseEntity<MagazineResponse> =
-    this?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()

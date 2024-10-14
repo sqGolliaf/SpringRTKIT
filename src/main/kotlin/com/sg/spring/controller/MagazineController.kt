@@ -4,34 +4,31 @@ import com.sg.spring.domain.CreateMagazineRequest
 import com.sg.spring.domain.MagazineResponse
 import com.sg.spring.domain.MagazinesResponse
 import com.sg.spring.domain.UpdateMagazineRequest
-import com.sg.spring.mapper.toResponseEntity
 import com.sg.spring.service.MagazineService
-import org.springframework.http.ResponseEntity
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import java.net.URI
 
 @RestController
 @RequestMapping("/api/v1/magazine")
 class MagazineController(private val service: MagazineService) {
 
     @PostMapping
-    fun save(@RequestBody request: CreateMagazineRequest): ResponseEntity<MagazineResponse> {
-        val savedMagazine = service.save(request)
-        return ResponseEntity.created(URI("/${savedMagazine?.id}")).body(savedMagazine)
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    fun save(@RequestBody request: CreateMagazineRequest): MagazineResponse? = service.save(request)
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable(name = "id") id: Int): ResponseEntity<MagazineResponse> =
-        service.getById(id).toResponseEntity()
+    fun findById(@PathVariable(name = "id") id: Int): MagazineResponse? = service.getById(id)
 
     @GetMapping
-    fun findAll(): ResponseEntity<MagazinesResponse> = ResponseEntity.ok(service.getAll())
+    fun findAll(): MagazinesResponse = service.getAll()
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     fun updateById(
         @PathVariable(name = "id") id: Int, @RequestBody magazine: UpdateMagazineRequest
-    ): ResponseEntity<MagazineResponse> = service.updateById(id, magazine).toResponseEntity()
+    ): MagazineResponse? = service.updateById(id, magazine)
 
     @DeleteMapping("/{id}")
-    fun deleteById(@PathVariable(name = "id") id: Int): ResponseEntity<*> = service.deleteById(id).toResponseEntity()
+    @ResponseStatus(HttpStatus.OK)
+    fun deleteById(@PathVariable(name = "id") id: Int) = service.deleteById(id)
 }

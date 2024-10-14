@@ -28,7 +28,7 @@ class MagazineDaoImpl(
 
         result?.text = magazine.text
 
-        magazineMock.add(result?: Magazine())
+        magazineMock.add(result ?: Magazine())
 
         return result
     }
